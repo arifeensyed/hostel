@@ -13,15 +13,18 @@ class CreatePeopleTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('people', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('cnic')->unique();
             $table->integer('contact');
             $table->string('institute')->nullable();
+            $table->integer('room_id')->unsigned();
+            $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

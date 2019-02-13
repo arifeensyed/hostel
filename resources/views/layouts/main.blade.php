@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('people.create') }}">Add New Resident <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('available') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('people.index') }}">View All Residents <span class="sr-only">(current)</span></a>
@@ -52,7 +52,7 @@
                 <a class="nav-link" href="{{ route('rooms.index') }}">View All Rooms <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">View Available Rooms <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('available') }}">View Available Rooms <span class="sr-only">(current)</span></a>
             </li>
 
         </ul>

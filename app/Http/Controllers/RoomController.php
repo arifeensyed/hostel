@@ -12,6 +12,12 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function availableRooms(){
+        $rooms=Room::where('available_capacity','>',0)->paginate(10);
+
+        return view('layouts.welcome')->with('rooms', $rooms);
+
+    }
     public function index()
     {
         $rooms = Room::orderBy('name')->paginate(10);
@@ -36,6 +42,7 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+
         $room = Room::create($request->all());
          if(!$room->exists)
          return redirect(route('rooms.index') )->with('status','room not created');

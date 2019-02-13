@@ -17,8 +17,8 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->string('name')->unique()->nullable();
             $table->string('description')->nullable();
-            $table->integer('capacity')->default(2);
-            $table->boolean('isAvailable')->default(1);
+            $table->integer('capacity');
+            $table->integer('available_capacity');
             $table->boolean('hasAc');
             $table->timestamps();
         });

@@ -27,6 +27,15 @@
             </select>
 
         </div>
+        <div class="form-group row">
+            <label for="roomcap" class="col"> Available Capacity </label>
+            <select class="form-control" id="roomcap" name="available_capacity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+            </select>
+
+        </div>
         <div class="radio form-group row">
             <label><input type="radio" name="hasAc" value="0" checked>Without Ac</label>
         </div>
@@ -36,7 +45,7 @@
 
         <div class="form-group row">
             <div class="offset-sm-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Create Department</button>
+                <button type="submit" class="btn btn-primary">Create Room</button>
             </div>
         </div>
     </form>

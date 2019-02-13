@@ -32,7 +32,7 @@
                         <th>Description</th>
                         <th>Capacity</th>
                         <th>AC</th>
-                        <th>Available</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,11 +44,6 @@
                             <td>{{$room->description }}</td>
                             <td>{{$room->capacity }}</td>
                             @if($room->hasAc==1)
-                                <td>yes</td>
-                            @else
-                                <td>No</td>
-                            @endif
-                            @if($room->isAvailable==1)
                                 <td>yes</td>
                             @else
                                 <td>No</td>

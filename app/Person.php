@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Person extends Model
 {
+    protected $guarded=[];
     public function allocation(){
-        $this->hasOne('App\Allocation');
+        return $this->hasOne('App\Allocation');
+    }
+    public function room(){
+        return $this->belongsTo('App\Room');
     }
 }

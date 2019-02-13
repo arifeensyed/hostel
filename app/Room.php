@@ -8,4 +8,7 @@ class Room extends Model
 {
     //
     protected $guarded = [];
+    public function person(){
+        return $this->hasMany('App\Person');
+    }
 }

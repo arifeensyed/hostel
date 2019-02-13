@@ -20,7 +20,6 @@ class CreateAllocationsTable extends Migration
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->date('start_date');
-
             $table->timestamps();
         });
     }

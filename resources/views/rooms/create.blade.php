@@ -10,12 +10,18 @@
             <label for="roomname" class="col"> Room Name </label>
             <input type="text" id="roomname" class="form-control" name="name"
                    placeholder="Room Name"/>
+            @foreach($errors->get('name') as $message)
+            <p style="color: red">{{ $message }}</p>
+            @endforeach
 
         </div>
         <div class="form-group row">
             <label for="roomdesc" class="col"> Room Description </label>
             <input type="text" id="roomdesc" class="form-control" name="description"
                    placeholder="Room Description"/>
+            @foreach($errors->get('description') as $message)
+                <p style="color: red">{{ $message }}</p>
+            @endforeach
 
         </div>
         <div class="form-group row">

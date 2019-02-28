@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePersonRequest;
 use App\Person;
 use App\Room;
 use Illuminate\Http\Request;
@@ -40,21 +41,20 @@ class PersonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePersonRequest $request)
     {
         $person = Person::create($request->all());
+        $room=Room::where('id', $request->input('room_id'))->first();
+        $count=$room->available_capacity;
+        $count=$count-1;
+        $room->available_capacity=$count;
+        $room->save();
         if(!$person->exists)
             return redirect(route('people.index') )->with('status','room not alloted');
         else
 //        session()->put('key', '<b>sd</b>');
 
 //    $value = $request->session()->get('key', 'default');
-        $room=Room::where('id', $request->input('room_id'))->first();
-        $count=$room->available_capacity;
-        $count=$count-1;
-        $room->available_capacity=$count;
-        $room->save();
-
             return redirect(route('available'))->with('status', 'Room alloted Successfully');
 
     }
@@ -78,7 +78,7 @@ class PersonController extends Controller
      */
     public function edit(Person $person)
     {
-        //
+        return view('people.edit')->with('person', $person);
     }
 
     /**
@@ -88,9 +88,10 @@ class PersonController extends Controller
      * @param  \App\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person)
+    public function update(StorePersonRequest $request, Person $person)
     {
-        //
+        $person->update($request->all());
+        return redirect(route('people.index'))->with('status', 'updated successfully')->withInput($request->all());
     }
 
     /**
@@ -101,6 +102,13 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        $room=Room::where('id', $person->room_id)->first();
+        $count=$room->available_capacity;
+        $count=$count+1;
+        $room->available_capacity=$count;
+        $room->save();
+        Person::destroy($person->id);
+        return redirect()->route('people.index')->with('status', 'successfully deleted');
+
     }
 }

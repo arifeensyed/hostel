@@ -10,6 +10,9 @@
 
                    value={{$room->name}}
             />
+            @foreach($errors->get('name') as $message)
+                <p style="color: red">{{ $message }}</p>
+            @endforeach
 
         </div>
         <div class="form-group row">
@@ -18,6 +21,9 @@
 
                    value={{$room->description}}
             />
+            @foreach($errors->get('description') as $message)
+                <p style="color: red">{{ $message }}</p>
+            @endforeach
 
         </div>
         <div class="form-group row">

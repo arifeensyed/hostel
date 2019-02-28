@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRoomRequest;
 use App\Room;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreRoomRequest $request)
     {
 
         $room = Room::create($request->all());
@@ -83,7 +84,7 @@ class RoomController extends Controller
      * @param  \App\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(StoreRoomRequest $request, Room $room)
     {
         $room->update($request->all());
         return redirect(route('rooms.index'))->with('status', 'updated successfully')->withInput($request->all());
